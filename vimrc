@@ -9,10 +9,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " alternatively, pass a path where Vundle should install plugins
-
 "call vundle#begin('~/some/path/here')
-
-
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -95,24 +92,15 @@ filetype plugin indent on    " required
 "filetype plugin on
 
 "
-
 " Brief help
-
 " :PluginList          - list configured plugins
-
 " :PluginInstall(!)    - install (update) plugins
-
 " :PluginSearch(!) foo - search (or refresh cache first) for foo
-
 " :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
 
 "
-
 " see :h vundle for more details or wiki for FAQ
-
 " Put your non-Plugin stuff after this line
-
-
 
 set backspace=2 " make backspace work like most other apps
 syntax on
@@ -120,6 +108,7 @@ set number
 set hlsearch
 set encoding=utf-8
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+" Highlight column line 80 for python files
 autocmd FileType python setlocal colorcolumn=80
 
 " VIM python execuction script
@@ -133,10 +122,14 @@ let mapleader= ","
 map ; :
 "change key binding for thesaurus word under cursor
 let g:online_thesaurus_map_keys = 0
-nnoremap <C-a> :OnlineThesaurusCurrentWord<CR> " control + a
-map <C-n> :NERDTreeToggle<CR> " open nerd tree with control + n
-nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p> " refresh nerdtree
-"set timeoutlen=0 " time in milliseconds that vim delays to execute a mapping
+" control + a
+nnoremap <C-a> :OnlineThesaurusCurrentWord<CR> 
+" open nerd tree with control + n
+map <C-n> :NERDTreeToggle<CR> 
+" refresh nerdtree
+nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p> 
+" time in milliseconds that vim delays to execute a mapping
+"set timeoutlen=0 
 let g:netrw_browsex_viewer="setsid xdg-open"
 set nospell
 colorscheme torte
@@ -144,19 +137,15 @@ colorscheme torte
 nnoremap <silent> <F5> :!python %<CR>
 " VIM C EXECUTION SCRIPT
 map <F8> :w <CR> :!gcc % -o %< && ./%< <CR>
-
 " Set lightline
 set laststatus=2
 set noshowmode
-
 " SEt multiple cursors
 let g:multi_cursor_use_default_mapping=0
 "let g:multi_cursor_Start_word_key = '<C-x>'
-
 " JEDI AUTOINITIALIZATION FLAG
 " to open popup press <Ctrl> + <Space>
 let g:jedi#popup_on_dot = 0
-
 " Vim Latex compile to pdf with ,ll
 let g:Tex_MultipleCompileFormats = 'pdf'
 let g:Tex_DefaultTargetFormat = 'pdf'
@@ -166,42 +155,23 @@ set nofoldenable " stop automatic folding
 if has("gui_running")
   set background=dark
   colorscheme solarized
-  " choose guifont depending on OS
-
-  if has("gui_gtk2")
-
-    set guifont=Inconsolata\ 12
-
-  elseif has("gui_macvim")
-
-    set guifont=Menlo\ Regular:h18
-
-  elseif has("gui_win31")
-
-    set guifont=Consolas:h14:cANSI
-
-  endif
-
-  " GUI is running or is about to start.
-
-  " Maximize gvim window.
-
   set lines=999 columns=999
-
+  " choose guifont depending on OS
+  if has("gui_gtk2")
+    set guifont=Inconsolata\ 12
+  elseif has("gui_macvim")
+    set guifont=Menlo\ Regular:h18
+  elseif has("gui_win31")
+    set guifont=Consolas:h14:cANSI
+  endif
+  " GUI is running or is about to start.
+  " Maximize gvim window.
 else
-
   " This is console Vim.
-
   if exists("+lines")
-
     set lines=36 " 36
-
   endif
-
   if exists("+columns")
-
     set columns=146 " 176
-
   endif
-
 endif
